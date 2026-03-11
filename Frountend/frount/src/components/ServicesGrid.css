@@ -1,0 +1,198 @@
+/* ServicesGrid CSS */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+}
+
+@media (min-width: 640px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1280px) {
+    .services-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.service-card {
+    height: 100%;
+}
+
+/* Image styles for Service Cards */
+.service-card-inner {
+    background: white;
+    border-radius: 20px;
+    /* removed padding from wrapper so image can be edge-to-edge */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--border-color);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.service-card-inner:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-color: rgba(26, 54, 40, 0.1);
+    /* Primary green adjusted */
+}
+
+/* Optional: Keep the shimmer gradient for hover if you want, but might obscure UI if applied over images. Let's keep it behind the content. */
+.service-card-inner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, rgba(26, 54, 40, 0.05), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.service-card-inner:hover::before {
+    opacity: 1;
+}
+
+.service-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    /* fixed height for thumbnail */
+    overflow: hidden;
+    background: var(--bg-light);
+    /* fallback */
+    border-radius: 20px 20px 0 0;
+}
+
+.service-image {
+    width: 100%;
+    height: 100%;
+    /* Use contain if applying user's transparent illustration vectors. Use cover for Unsplash photos. */
+    object-fit: contain;
+    transition: transform 0.6s ease;
+}
+
+.service-card-inner:hover .service-image {
+    transform: scale(1.08);
+    /* slight zoom */
+}
+
+.service-image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.05) 0%, transparent 100%);
+    opacity: 0.8;
+}
+
+.service-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1.5rem 0;
+    /* Add padding back to content areas */
+}
+
+.service-info h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+}
+
+.service-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.service-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    margin-bottom: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border-color);
+}
+
+.service-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.star-icon {
+    color: #F59E0B;
+}
+
+.service-availability {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: rgba(16, 185, 129, 0.1);
+    padding: 0.4rem 0.75rem;
+    border-radius: 20px;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* Shimmer Animation for Button */
+.shimmer-btn {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--primary);
+    z-index: 1;
+}
+
+.shimmer-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.2) 50%,
+            rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-20deg);
+    transition: all 0.5s;
+    z-index: -1;
+}
+
+.service-card-inner:hover .shimmer-btn::before {
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    100% {
+        left: 200%;
+    }
+}

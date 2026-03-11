@@ -1,0 +1,17 @@
+# Backend
+.env
+__pycache__/
+*.pyc
+db.sqlite3
+/Backend/project/media/
+/Backend/project/static/
+
+# Frontend
+/Frountend/frount/node_modules/
+/Frountend/frount/build/
+/Frountend/frount/dist/
+.env.local
+.env.development
+.env.test
+.env.production
+.DS_Store
