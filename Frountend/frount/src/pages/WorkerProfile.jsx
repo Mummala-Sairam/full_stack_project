@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Star, ShieldCheck, Clock, CheckCircle, MapPin, IndianRupee } from 'lucide-react';
 import './WorkerProfile.css';
 
-const API_URL = 'http://127.0.0.1:8000/api';
+const API_URL = 'https://full-stack-project-1-jfh9.onrender.com/api';
 
 const WorkerProfile = () => {
     const { id } = useParams();

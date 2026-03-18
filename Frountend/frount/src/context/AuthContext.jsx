@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
     const [authToken, setAuthToken] = useState(() => localStorage.getItem('access_token') || null);
     const navigate = useNavigate();
 
-    const API_URL = 'http://127.0.0.1:8000/api';
+    const API_URL = 'https://full-stack-project-1-jfh9.onrender.com/api';
 
     useEffect(() => {
         if (authToken) {

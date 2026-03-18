@@ -99,7 +99,7 @@ const ServiceDetail = () => {
     useEffect(() => {
         const fetchWorkers = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/workers/');
+                const response = await axios.get('https://full-stack-project-1-jfh9.onrender.com/api/workers/');
                 const allWorkers = response.data;
                 // Try to filter by exact category match, if none exist show all workers for demo purposes
                 const filtered = allWorkers.filter(w => w.category.toLowerCase() === serviceName.toLowerCase());
